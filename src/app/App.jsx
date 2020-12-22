@@ -8,15 +8,27 @@ import {Footer} from './components/Footer';
 
 // React functional component
 // whenever called, create v.doms and return v.dom
-function App() {
+function App() { // App is parent compoennt
     console.log('App render')
+
+    const title = "Product App"
+    const year = 2020
+    const company = "Shopping Mart"
 
     return (
         <div>
             <h2>Product App</h2>
             <p>Welcome to shop</p>
-            <Header />
-            <Footer />
+
+            {/* comments */}
+            {/* composition:  Header and Footer are children */}
+            {/* passing data from parent to child 
+                props - properties
+            */}
+            <Header title={title} />
+            <Footer title={title} year={year} company={company} 
+                    flag
+            />
         </div>
     )
 }
