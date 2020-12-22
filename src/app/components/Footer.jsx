@@ -15,8 +15,8 @@ const Footer = ({title, year, company, flag}) => (
     <div>
         <hr />
         <p>Copyrights {year}, {title}, {company}</p>
-        <p>{flag ? <p>Sat/Sun holiday</p> 
-                   : <p>No holiday</p> }</p>
+        <p>{flag ? "Sat/Sun holiday" 
+                   : "No holiday" }</p>
     </div>
 )
 
