@@ -102,12 +102,14 @@ class Counter extends React.Component {
 
         console.log("Before ", this.state)
         // Async
+        // {counter: 100 + 1}
         this.setState({
             counter: this.state.counter + 1
         })
 
         // this.state still not yet updated
         // this code cannot solve issue
+        // {counter: 100 + 1}
         this.setState({
             counter: this.state.counter + 1
         })
@@ -150,7 +152,6 @@ class Counter extends React.Component {
             // return {counter: 99}
             return {counter: state.counter  - 1}; // NOTE: this is NOT this.state
         })
-
 
         // the last update state is merged into this.state before render
         this.setState((state, props) => {
