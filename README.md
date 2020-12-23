@@ -30,3 +30,14 @@ npm start
 
 open your browser and check localhost:3000
 
+
+
+Child to parent communication 
+using function call
+
+The parent component shall pass a function to the child component
+child component will that function
+
+Cart [remove/updateItem]
+    Cart List 
+        CartItem [button are here]

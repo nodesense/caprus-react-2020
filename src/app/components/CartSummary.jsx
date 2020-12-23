@@ -36,6 +36,24 @@ import PropTypes from "prop-types";
             grandTotal
         })
     }
+
+    static getDerivedStateFromProps(props, state) {
+        let discount = 0;
+
+        if (props.count >= 10) {
+            discount = 20;
+        } else if (props.count >= 5) {
+            discount = 10;
+        }
+
+        let grandTotal = props.amount - (props.amount * discount / 100);
+
+        return {
+            discount, 
+            grandTotal
+        }
+
+    }
      
 
 

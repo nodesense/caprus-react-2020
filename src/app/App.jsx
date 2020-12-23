@@ -6,6 +6,8 @@ import Header from './components/Header';
 // {}, not a default
 import {Footer} from './components/Footer';
 import Counter from './components/Counter';
+import Cart from './components/Cart';
+
 
 
 // React functional component
@@ -32,6 +34,8 @@ function App() { // App is parent compoennt
             <Header title={title} >
                 <p>Welcome to shop</p>
             </Header>
+
+            <Cart />
 
             <Counter startValue={100} />
 

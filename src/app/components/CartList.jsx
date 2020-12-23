@@ -17,7 +17,7 @@ import CartItem from "./CartItem";
     render() {
         console.log("CartList Render");
 
-        let {items} = this.props;
+        let {items, removeItem, updateItem} = this.props;
 
         return (
             <div> 
@@ -34,6 +34,21 @@ import CartItem from "./CartItem";
                 </thead>
                 <tbody>
                     {/* TODO props items map with CartItem */ }
+
+                    {/*
+                        how to write a loop expression
+                        JSX doesn't accept statement, only accept expressions
+                        and importance of key property/reserved react keyword
+                    */  }
+
+                    {
+                        items.map (item => <CartItem item={item} 
+                                                     key={item.id}   
+                                                     removeItem={removeItem}
+                                                     updateItem={updateItem}
+                        
+                        /> )
+                    }
 
                 </tbody>
             </table>
