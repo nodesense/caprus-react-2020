@@ -17,23 +17,36 @@ function App() { // App is parent compoennt
     const year = 2020
     const company = "Shopping Mart"
 
+    const cN = "Dec"
+    const sP = "Jan"
+
     return (
         <div>
-            <h2>Product App</h2>
-            <p>Welcome to shop</p>
+           
 
             {/* comments */}
             {/* composition:  Header and Footer are children */}
             {/* passing data from parent to child 
                 props - properties
             */}
-            <Header title={title} />
+            <Header title={title} >
+                <p>Welcome to shop</p>
+            </Header>
 
             <Counter startValue={100} />
 
             <Footer title={title} year={year} company={company} 
                     flag
-            />
+            >
+                {/* Content children
+                
+                    scope/data is bined to parent component - App
+                    contex/dom is rendered into child component - Footer
+                    content children are passed to child component as props.children - array type
+                */}
+                <p>Chritsmas/NewYear Holiday Sale!! {cN}</p>
+            <p>Extended Pongal/Sankrati fetival {sP}</p>
+            </Footer>
         </div>
     )
 }

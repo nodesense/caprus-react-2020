@@ -8,15 +8,17 @@ import PropTypes from 'prop-types'; // npm install prop-types
 // const add = (a, b) => {  //block, need return keyword
        // return a + b;
 //}
-
+//children is keyword in props
 // destructuring at function declaration
-// let {title, year, company} = props
-const Footer = ({title, year, company, flag}) => (
+// let {title, year, company, children} = props
+const Footer = ({title, year, company, flag, children}) => (
     <div>
         <hr />
         <p>Copyrights {year}, {title}, {company}</p>
         <p>{flag ? "Sat/Sun holiday" 
                    : "No holiday" }</p>
+
+        {children}
     </div>
 )
 

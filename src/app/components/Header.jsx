@@ -8,11 +8,13 @@ const Header = (props) => {
     // we cannot change properties
     // props.title = "something but error"; // error, won't work
     // destructuring
-    const {title} = props;
+    const {title, children} = props;
 
     return (
         <div>
             <h2>{title}</h2>
+            {children}
+            <hr />
         </div>
     )
 }

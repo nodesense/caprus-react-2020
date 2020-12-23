@@ -32,6 +32,7 @@ class Counter extends React.Component {
     // setState
 
     // react shall pass event object as its first argument
+    // es6 style function
     increment(e) {
         console.log('increment called', e);
         console.log('this value is ', this)
@@ -44,6 +45,7 @@ class Counter extends React.Component {
         // possible only with class component
         // setState is ASYNC function
         // setState is queue the state change in batches
+        // setState will trigger render function
         // before calling render function, it merges the states from batch
         // update the this.state with new state
         // then render is called
@@ -94,9 +96,19 @@ class Counter extends React.Component {
                     on event, it calls the function directly
                     and passing event object as first arg
                     */}
+
+                <button onClick={this.increment}>+1 CRASH due this</button>
+
+                {/* resolve this in lexical scope
+                    => arrow function
+                    created whenever render function called
+                */}
                 <button onClick={(e) => this.increment(e) }>+1</button>
             
                 <div onClick={this.divClick}>
+                    {/* 
+                        created only once, using es.next
+                    */}
                     <button onClick={this.decrement}>-1</button>
                 </div>
             </div>
