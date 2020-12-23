@@ -1,3 +1,29 @@
+```
+
+ npm dependecies 
+   per project
+ 
+   npm maintain cache
+   %APPDATA%
+    npm-cache directory
+
+ -g --global depencies - command line tools not for project
+```
+
+
+
+```
+npx create-react-app my-app
+
+cd my-app
+
+npm start
+
+check http://localhost:3000 in browser
+
+
+```
+
 
 
 Node.js 14.x LTS
