@@ -77,8 +77,70 @@ class Counter extends React.Component {
         console.log("Div click called")
     }
 
+    changeState = () => {
+        // setState
+        // cause re-render the v.dom with control
+        // good, recommended, shouldComponentUpdate, we can have option to stop rendering
+        this.setState({flag: true})
+    }
+
+    forceRender = () => {
+        // no change in state, but want to render the component again
+       //  forceUpdate 
+       // cause re-render the v.dom
+       // bad, it causes re-render without any control
+       this.forceUpdate(); // keyword react internal function
+    }
+
+    // C1 = A1 + B1
+    // F1 = C1 + D1
+
+    // won't work rightly
+    incrementTwiceBug = () => {
+        // increment by 1
+        // increment by 1 [dependent state/reactive state]
+
+        console.log("Before ", this.state)
+        // Async
+        this.setState({
+            counter: this.state.counter + 1
+        })
+
+        // this.state still not yet updated
+        // this code cannot solve issue
+        this.setState({
+            counter: this.state.counter + 1
+        })
+        console.log("After ", this.state)
+    }
+
+    //Solution 1: setState callback, ineffieent, due to additional re-rendering
+    incrementTwice = () => {
+        // state { counter: 100}
+        this.setState({
+            counter: this.state.counter + 1
+        }, () => { // callback
+            // called after the state is updated/merged to this.state
+            // called after the render function
+            // state { counter: 101}
+            console.log("setstate callback called");
+            // callling setState/forupdate shall call render again
+
+            this.setState({
+                counter: this.state.counter + 1
+            })
+
+        })
+    }
+
+
     // keyword
     // to create v.doms and return v.doms
+
+    // when called? : During creation time [Mouting/creation stage] [cannot stop render]
+    // when called? : Whenever parent render called on update stage [after first render] [stop the rendering]
+    // when called? : this.setState update stage [stop the render]
+    // wen called? : this.forceUpdate [cannot stop rendering]
     render() {
         // this.props contains props value
         console.log("Counter render props ", this.props);
@@ -97,8 +159,13 @@ class Counter extends React.Component {
                     and passing event object as first arg
                     */}
 
+                <button onClick={this.changeState}>Set State</button>
+                <button onClick={this.forceRender}>forceUpdate</button>
                 <button onClick={this.increment}>+1 CRASH due this</button>
 
+                <button onClick={this.incrementTwiceBug}>incrementTwiceBug</button>
+
+                <button onClick={this.incrementTwice}>incrementTwice Render twice Inefficient</button>
                 {/* resolve this in lexical scope
                     => arrow function
                     created whenever render function called
