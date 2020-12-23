@@ -134,6 +134,38 @@ class Counter extends React.Component {
     }
 
 
+    // Solution 2: recommended, functional setState
+    // how do optimally use the setState on dependent item/reactive side
+    // render only once
+    decrementTwice = () => {
+        // setState takes a function instead of state value
+        // async
+        console.log("Begin ", this.state)
+        // these functions called before render
+        // output of one func setState passed as input to next func setstate function
+        this.setState((state, props) => {
+            // state {counter: 100}
+            console.log("Func setState called", state)
+            // return a new state
+            // return {counter: 99}
+            return {counter: state.counter  - 1}; // NOTE: this is NOT this.state
+        })
+
+
+        // the last update state is merged into this.state before render
+        this.setState((state, props) => {
+             // state {counter: 99}
+            console.log("Func2 setState called", state)
+            // return a new state
+             // return {counter: 98}
+            return {counter: state.counter  - 1}; // NOTE: this is NOT this.state
+        })
+        
+        console.log("After ", this.state);
+    }
+   
+
+
     // keyword
     // to create v.doms and return v.doms
 
@@ -166,6 +198,9 @@ class Counter extends React.Component {
                 <button onClick={this.incrementTwiceBug}>incrementTwiceBug</button>
 
                 <button onClick={this.incrementTwice}>incrementTwice Render twice Inefficient</button>
+                
+                <button onClick={this.decrementTwice}>decrementTwice</button>
+                
                 {/* resolve this in lexical scope
                     => arrow function
                     created whenever render function called
