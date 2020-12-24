@@ -56,6 +56,31 @@ import PropTypes from "prop-types";
     }
      
 
+    // is called only on update cycle
+        // when parent render called
+        // when this.setState called
+        // NOT called when we do this.forceUpdate
+    
+    // this function decide wheter render can be called or not
+    // by comparing values of props and state
+    // return true means, the data changed, then render to be called
+    // return false means, no data change, no need to call render
+    shouldComponentUpdate(nextProps, nextState) {
+        console.log('Summary shouldComponentUpdate nextProps', nextProps)
+        console.log('Summary shouldComponentUpdate nextState', nextState)
+        console.log('Summary shouldComponentUpdate currentState', this.state)
+        console.log('Summary shouldComponentUpdate currentPRops', this.props)
+        
+        // this works
+        // not scable when we have more properties, state items
+        return nextProps.amount !== this.props.amount ||
+               nextProps.count !== this.props.count ||
+               nextState.discount !== this.state.discount ||
+               nextState.grandTotal !== this.state.grandTotal;
+
+        //return true; // call render
+        //return false; // doesn't call render
+    }
 
     
     render() {

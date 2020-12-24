@@ -14,13 +14,30 @@ class Cart extends Component {
     static propTypes = {
     
     }
+    
     constructor(props) {
         super(props);
 
+        const items = []
+
+        for (let i = 0; i < 1000; i++) {
+            let id = Math.ceil(Math.random() * 10000) + "-" + Math.ceil(Math.random() * 566);
+            let item = {
+                id,
+                name: `Product ${id}`,
+                price: Math.ceil(Math.random() * 100),
+                qty: 1
+            }
+
+            items.push(item)
+        }
+
         this.state = {
-            items: [ 
-            			{id: 1, name: 'P1', price: 100, qty: 5}
-            	   ],
+            items,
+            // items: [ 
+            // 			{id: 1, name: 'P1', price: 100, qty: 5}
+            //        ],
+                   
             amount: 0, // sum of all items price * qty
             count: 0, // sum of all items qty
             flag: true
@@ -69,7 +86,7 @@ class Cart extends Component {
         console.log('update item called ', id, qty)
 
         this.setState( {
-            items: this.state.items.map ( item => item.id === id? {...item, qty}: item)
+            items: this.state.items.map ( item => item.id === id? {...item, qty}: item )
         })
     }
 
@@ -80,6 +97,9 @@ class Cart extends Component {
 
     //dummy
     refresh = () => {
+        // cause the render to be called, 
+        // cause child render also
+        // something which is irrelevant to cart items
         this.setState({
             flag: true
         })
@@ -144,7 +164,11 @@ class Cart extends Component {
                 Refresh
             </button>
             
-
+            {
+            /* when function is used as props, avoid 
+                arrow functions, instead use es.next/bind
+            */
+            }
             <CartList  items={this.state.items}  
                        removeItem={this.removeItem}
                        updateItem={this.updateItem}
