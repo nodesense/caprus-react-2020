@@ -58,11 +58,19 @@ class Cart extends Component {
         // do not mutate the state, items 
         // immutable item, state
         console.log('removeItem called', id)
+        this.setState( {
+            // returns all items except the one we need to remove
+            items: this.state.items.filter (item => item.id !== id)
+        })
     }
 
     updateItem = (id, qty) => {
         //TODO: assignment tonight
         console.log('update item called ', id, qty)
+
+        this.setState( {
+            items: this.state.items.map ( item => item.id === id? {...item, qty}: item)
+        })
     }
 
     empty = () => {
@@ -98,6 +106,9 @@ class Cart extends Component {
     // implement business login based on props and state
     // called whenever parent render, parent rener will cause child render too
     // retrn a new state if any changes
+    // When we need to do a busines or calculate derived data based on state/props change
+    // this method replaces two old life cycle methods 
+            /// componentWillMount(), componentWillReciveProps - deprecated
     static getDerivedStateFromProps(props, state) {
         let count = 0, 
             amount = 0;

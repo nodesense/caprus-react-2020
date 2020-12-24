@@ -89,6 +89,7 @@ class Counter extends React.Component {
        //  forceUpdate 
        // cause re-render the v.dom
        // bad, it causes re-render without any control
+       // DOM events, scroll dom updated, oriententaion, ...
        this.forceUpdate(); // keyword react internal function
     }
 

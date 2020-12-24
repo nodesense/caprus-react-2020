@@ -1,5 +1,4 @@
 ```
-
  npm dependecies 
    per project
  
@@ -9,7 +8,6 @@
 
  -g --global depencies - command line tools not for project
 ```
-
 
 
 ```
@@ -67,3 +65,23 @@ child component will that function
 Cart [remove/updateItem]
     Cart List 
         CartItem [button are here]
+
+
+
+```
+
+> item1 = {id: 1, qty: 1}
+{ id: 1, qty: 1 }
+> item2 = {id: 2, qty: 2}
+{ id: 2, qty: 2 }
+> items = [item1, item2]
+[ { id: 1, qty: 1 }, { id: 2, qty: 2 } ]
+> itemsClone = items.map (item => item.id == 1? {...item, qty: 2}: item)
+[ { id: 1, qty: 2 }, { id: 2, qty: 2 } ]
+> items
+[ { id: 1, qty: 1 }, { id: 2, qty: 2 } ]
+> item1
+{ id: 1, qty: 1 }
+> item2
+{ id: 2, qty: 2 }
+```
