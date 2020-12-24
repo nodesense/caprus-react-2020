@@ -8,6 +8,7 @@ import {Footer} from './components/Footer';
 import Counter from './components/Counter';
 import Cart from './components/Cart';
 
+import Checkout from './components/Checkout';
 
 
 // React functional component
@@ -21,7 +22,7 @@ function App() { // App is parent compoennt
 
     const cN = "Dec"
     const sP = "Jan"
-
+    
     return (
         <div>
            
@@ -34,6 +35,8 @@ function App() { // App is parent compoennt
             <Header title={title} >
                 <p>Welcome to shop</p>
             </Header>
+
+            <Checkout />
 
             <Cart />
 
