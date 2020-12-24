@@ -1,5 +1,8 @@
 import React, { Component, createRef } from 'react'
 
+// pop-up window
+// placeholder - dom element placed in app component
+// you can ref from the app component/container component and push donw using props -
 
 // how to work with input control
 // Ref: createRef
