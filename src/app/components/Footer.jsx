@@ -3,6 +3,7 @@
 import React from 'react';
 
 import PropTypes from 'prop-types'; // npm install prop-types
+import ThemeContext from '../contexts/ThemeContext';
 
 // const add = (a, b) => a + b // single line, no need for return
 // const add = (a, b) => {  //block, need return keyword
@@ -19,6 +20,13 @@ const Footer = ({title, year, company, flag, children}) => (
                    : "No holiday" }</p>
 
         {children}
+
+        {/* for functional component, we need to use consumers */}
+        <ThemeContext.Consumer>
+            {
+              (theme) => (<p>Theme is {theme.scheme}</p>)  
+            }
+        </ThemeContext.Consumer>
     </div>
 )
 

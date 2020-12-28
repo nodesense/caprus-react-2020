@@ -1,5 +1,5 @@
 // App.jsx
-import React from 'react';
+import React, {useState} from 'react';
 
 import Header from './components/Header';
 
@@ -9,12 +9,19 @@ import Counter from './components/Counter';
 import Cart from './components/Cart';
 
 import Checkout from './components/Checkout';
+import ThemeContext from './contexts/ThemeContext';
+
 
 
 // React functional component
 // whenever called, create v.doms and return v.dom
 function App() { // App is parent compoennt
     console.log('App render')
+
+    // to be discussed tomorrow in detail
+    // react hooks - adding state to functions
+    const [scheme, setScheme] = useState('red')
+
 
     const title = "Product App"
     const year = 2020
@@ -25,6 +32,7 @@ function App() { // App is parent compoennt
     
     return (
         <div>
+            <ThemeContext.Provider value={ {scheme: scheme} }>
            
 
             {/* comments */}
@@ -32,6 +40,11 @@ function App() { // App is parent compoennt
             {/* passing data from parent to child 
                 props - properties
             */}
+
+            <button onClick={ () => setScheme('light')}>Light</button>
+            <button onClick={ () => setScheme('red')}>Red</button>
+            <button onClick={ () => setScheme('Dark')}>Dark</button>
+            
             <Header title={title} >
                 <p>Welcome to shop</p>
             </Header>
@@ -40,7 +53,9 @@ function App() { // App is parent compoennt
 
             <Cart />
 
-            <Counter startValue={100} />
+          
+                 <Counter startValue={100} />
+            
 
             <Footer title={title} year={year} company={company} 
                     flag
@@ -54,6 +69,8 @@ function App() { // App is parent compoennt
                 <p>Chritsmas/NewYear Holiday Sale!! {cN}</p>
             <p>Extended Pongal/Sankrati fetival {sP}</p>
             </Footer>
+
+            </ThemeContext.Provider>
         </div>
     )
 }

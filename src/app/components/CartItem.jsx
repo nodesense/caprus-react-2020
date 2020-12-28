@@ -1,8 +1,15 @@
 // CartItem.js
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
+import ThemeContext from "../contexts/ThemeContext";
 
 class CartItem extends PureComponent {
+
+    // to consume context in class component
+    // consume at max only one context this way
+    // for more contexts? user Consumer
+    static contextType = ThemeContext
+
     // CREATION/MOUNTUNG STAGE : Lifecycle, called only once per instance
     constructor(props) {
         super(props);
@@ -33,7 +40,7 @@ class CartItem extends PureComponent {
                 </button>    
 
                 <button onClick={ () => removeItem(item.id) }>
-                        X
+                        X - {this.context.scheme}
                 </button>
                 </td>
             </tr>

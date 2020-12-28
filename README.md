@@ -85,3 +85,56 @@ Cart [remove/updateItem]
 > item2
 { id: 2, qty: 2 }
 ```
+
+
+REACT CONTEXT
+
+PROPS - pass to one level down
+
+Cart [data]
+  Cart List [data]
+    Cart ITem [data]
+
+----
+
+PArent 1 [data, theme=dark, lang=de]
+  Parent 2 [data, theme=dark, lang=de]
+      parent 3 [data, theme=dark, lang=de]
+            ..
+            ..
+              ..
+
+                 child 20 [data, theme=dark, lang=de]
+
+---
+
+Globally available, very rarely updated
+shouldComponentUpdate, not there for context update
+Using context, you can pass data at any level
+
+
+Theme
+Languages
+User Preference
+
+---
+
+Invoices
+Billings
+
+
+Context - to pass data to any level
+        - use it for global settings
+
+Context Consumer
+  the component which consume context values
+  by default, if no provider in Component hierarchy, 
+    it will consume default value
+
+  if provider present, then it will consume provider value not default
+
+
+Context Provider
+  the component which provides context values
+  from the parent level, any consumer within that branch tree, can get the context values
+  
