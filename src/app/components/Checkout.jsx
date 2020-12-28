@@ -44,6 +44,7 @@ export default class Checkout extends Component {
     }
 
     render() {
+        console.log("Checkout render", this.props)
         return (
             <div>
                 <h2>Checkout</h2>
@@ -57,6 +58,10 @@ export default class Checkout extends Component {
                            />
 
                     <p ref={this.helpTextRef}></p>
+
+                    <button onClick={ () => this.props.history.push("/cart")}>
+                        Cart
+                    </button>
                 </form>
             </div>
         )

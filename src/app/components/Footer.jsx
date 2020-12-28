@@ -5,6 +5,9 @@ import React from 'react';
 import PropTypes from 'prop-types'; // npm install prop-types
 import ThemeContext from '../contexts/ThemeContext';
 
+// higher order component  to help passing params, match, history to child component
+import {withRouter} from 'react-router-dom';
+
 // const add = (a, b) => a + b // single line, no need for return
 // const add = (a, b) => {  //block, need return keyword
        // return a + b;
@@ -12,7 +15,7 @@ import ThemeContext from '../contexts/ThemeContext';
 //children is keyword in props
 // destructuring at function declaration
 // let {title, year, company, children} = props
-const Footer = ({title, year, company, flag, children}) => (
+const Footer = ({title, year, company, flag, children, history}) => (
     <div>
         <hr />
         <p>Copyrights {year}, {title}, {company}</p>
@@ -27,6 +30,8 @@ const Footer = ({title, year, company, flag, children}) => (
               (theme) => (<p>Theme is {theme.scheme}</p>)  
             }
         </ThemeContext.Consumer>
+
+        <button onClick={ () => history.push('/checkout')}>Checkout</button>
     </div>
 )
 
@@ -48,4 +53,5 @@ Footer.defaultProps = {
 
 // no default here, 
 // explicit export, whiel imporint it needs {}, case sensitive
-export {Footer}
+// withRouter will create a container component, and pass the history and other props to Footer
+export default withRouter(Footer);

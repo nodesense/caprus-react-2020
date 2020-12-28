@@ -4,7 +4,7 @@ import React, {useState} from 'react';
 import Header from './components/Header';
 
 // {}, not a default
-import {Footer} from './components/Footer';
+import Footer from './components/Footer';
 import Counter from './components/Counter';
 import Cart from './components/Cart';
 
@@ -77,18 +77,47 @@ function App() { // App is parent compoennt
                 <h2>Wecome to product app!!</h2>
             </Route>
 
+            {/* histroy, location, params are passed as props
+                BUT we cannot pass custom props for our component
+            */}
             <Route path="/checkout" component={Checkout} />
             
-            <Route path="/cart">
-                <Cart />
+            <Route path="/cart"
+                   render={ (props) => <Cart {...props} /> } 
+            >
+                {/* histroy, location, params are CANNOT passed as props  */}
+                {/* <Cart  /> */}
             </Route>
 
             {/* recommended approach */}
             <Route path="/counter" 
-                    render={ (props) => <Counter startValue={100} /> }> 
+                    render={ (props) => <Counter startValue={100} {...props} /> }> 
             </Route>
 
             <Redirect path="/newcounter" to="/counter" />
+
+            {/*
+
+                :country is a dynamic property
+                which will be availabel as props.match
+
+                props.match = {
+                    "path":"/contact/:country", -- route path
+                "url":"/contact/India", -- from address bar
+                "isExact":true, 
+                "params":{"country":"India"}} -- parsed data
+
+                http://localhost:3000/contact/USA
+                http://localhost:3000/contact/IN
+
+            */}
+
+            <Route path="/contact/:country"
+                   render= { (props) => (<div>
+                         <h2>Contact </h2>
+                         {JSON.stringify(props.match)}
+                   <p>Country {props.match.params.country}</p>
+                   </div>) } />
 
             {/* match all, useful for not found , will appear for all urls
             

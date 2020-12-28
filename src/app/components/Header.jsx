@@ -18,7 +18,7 @@ const Header = (props) => {
             {children}
 
             {/* NavLink has activeClassName to apply different color */}
-
+            
             <NavLink exact to="/" className="button" activeClassName="success">Home</NavLink>
             <NavLink to="/products" className="button " activeClassName="success">Products</NavLink>
             <NavLink to="/cart" className="button" activeClassName="success">Cart</NavLink>

@@ -95,6 +95,8 @@ class Cart extends Component {
         this.setState({items: []})    
     }
 
+
+
     //dummy
     refresh = () => {
         // cause the render to be called, 
@@ -143,10 +145,15 @@ class Cart extends Component {
         return {amount, count}
     }
 
+
+    gotoCheckout = () => {
+        // write code to move from cart to checkout
+        // js
+    }
     
     
     render() {
-        console.log("Cart render")
+        console.log("Cart render", this.props)
         return (
             <div> 
             <h2>Cart</h2>
@@ -162,6 +169,10 @@ class Cart extends Component {
 
             <button onClick={this.refresh}>
                 Refresh
+            </button>
+
+            <button onClick={ () => this.props.history.push("/checkout")}>
+                        Checkout
             </button>
             
             {
