@@ -1,6 +1,8 @@
 // Header.jsx
 import React from 'react';
 
+import {Link, NavLink} from 'react-router-dom';
+
 // to receive the props data from parent
 // props are read only, getter only object,no setters allowed
 const Header = (props) => {
@@ -14,6 +16,15 @@ const Header = (props) => {
         <div>
             <h2>{title}</h2>
             {children}
+
+            {/* NavLink has activeClassName to apply different color */}
+
+            <NavLink exact to="/" className="button" activeClassName="success">Home</NavLink>
+            <NavLink to="/products" className="button " activeClassName="success">Products</NavLink>
+            <NavLink to="/cart" className="button" activeClassName="success">Cart</NavLink>
+            <NavLink to="/checkout" className="button" activeClassName="success">Checkout</NavLink>
+
+            <Link to="/login">Login</Link>
             <hr />
         </div>
     )

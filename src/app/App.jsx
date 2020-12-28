@@ -11,6 +11,12 @@ import Cart from './components/Cart';
 import Checkout from './components/Checkout';
 import ThemeContext from './contexts/ThemeContext';
 
+import {
+    BrowserRouter as Router, // alias name
+    Route,
+    Switch,
+    Redirect
+} from 'react-router-dom';
 
 
 // React functional component
@@ -31,6 +37,7 @@ function App() { // App is parent compoennt
     const sP = "Jan"
     
     return (
+        <Router>
         <div>
             <ThemeContext.Provider value={ {scheme: scheme} }>
            
@@ -49,13 +56,56 @@ function App() { // App is parent compoennt
                 <p>Welcome to shop</p>
             </Header>
 
-            <Checkout />
-
-            <Cart />
-
-          
-                 <Counter startValue={100} />
+            {/*
             
+                why home page is always appearing
+
+                pattern matching    / - starts with /
+                pattern matching /contact - starts with /
+                pattern matching /cart - start with /
+
+                use exact property for exact match
+
+            */}
+
+            {/* Switch pick the top match */}
+
+            <Switch>
+                
+            <Route path="/" exact >
+                <h1>Home</h1>
+                <h2>Wecome to product app!!</h2>
+            </Route>
+
+            <Route path="/checkout" component={Checkout} />
+            
+            <Route path="/cart">
+                <Cart />
+            </Route>
+
+            {/* recommended approach */}
+            <Route path="/counter" 
+                    render={ (props) => <Counter startValue={100} /> }> 
+            </Route>
+
+            <Redirect path="/newcounter" to="/counter" />
+
+            {/* match all, useful for not found , will appear for all urls
+            
+                order matter
+                this should be the last one in route
+            */}
+            <Route path="*">
+                <h2>The page you are looking for is not available!!</h2>
+            </Route>    
+
+            </Switch>
+             
+{/* 
+            <Checkout />
+            <Cart />
+            <Counter startValue={100} />
+             */}
 
             <Footer title={title} year={year} company={company} 
                     flag
@@ -72,6 +122,7 @@ function App() { // App is parent compoennt
 
             </ThemeContext.Provider>
         </div>
+        </Router>
     )
 }
 
