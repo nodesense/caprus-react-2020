@@ -11,12 +11,15 @@ import Cart from './components/Cart';
 import Checkout from './components/Checkout';
 import ThemeContext from './contexts/ThemeContext';
 
+ 
 import {
     BrowserRouter as Router, // alias name
     Route,
     Switch,
     Redirect
 } from 'react-router-dom';
+import FuncCounter from './components/FuncCounter';
+import FuncCart from './components/FuncCart';
 
 
 // React functional component
@@ -75,6 +78,10 @@ function App() { // App is parent compoennt
             <Route path="/" exact >
                 <h1>Home</h1>
                 <h2>Wecome to product app!!</h2>
+
+                <FuncCart />
+                <FuncCounter />
+
             </Route>
 
             {/* histroy, location, params are passed as props

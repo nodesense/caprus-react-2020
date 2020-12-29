@@ -138,3 +138,176 @@ Context Provider
   the component which provides context values
   from the parent level, any consumer within that branch tree, can get the context values
   
+
+--- 
+
+OOP vs Functional
+
+OOP
+
+class Calcutor {
+  // state
+  int sum = 0;
+  // impure function, given same, doesn't same output
+  int add(int value) {
+    // mutablity
+    sum += value;
+    return sum;
+  }
+}
+
+calc = new Calculator()
+
+calc.add(10); // 10
+calc.add(10); // 20
+
+calc.add(10)
+calc.add(10)
+calc.add(10)
+
+calc.add(10)
+calc.add(10)
+calc.add(10)
+calc.add(10)
+calc.add(10)
+calc.add(10)
+calc.add(10)
+calc.add(10)
+calc.add(10)
+calc.add(10)
+calc.add(10)
+calc.add(10)
+calc.add(10)
+calc.add(10)
+calc.add(10)
+calc.add(10)
+calc.add(10)
+calc.add(10)
+calc.add(10)
+calc.add(10)
+calc.add(10)
+calc.add(10)
+calc.add(10)
+calc.add(10) // output?? 
+
+Functional
+
+// pure function
+// given same input, it returns same output
+function add(sum, value) {
+  return sum + value;
+}
+
+add(0, 10) // 10
+add(0, 10) // 10
+
+add(0, 10)
+add(0, 10)
+add(0, 10)
+
+add(0, 10)
+add(0, 10)
+add(0, 10)
+add(0, 10)
+add(0, 10)
+add(0, 10)
+add(0, 10)
+add(0, 10)
+add(0, 10)
+add(0, 10)
+add(0, 10)
+add(0, 10)
+add(0, 10)
+add(0, 10)
+add(0, 10)
+add(0, 10)
+add(0, 10)
+add(0, 10)
+add(0, 10)
+add(0, 10)
+add(0, 10)
+add(0, 10)
+add(0, 10)
+add(0, 10)
+add(0, 10)
+add(0, 10)
+add(0, 10)
+add(0, 10)
+add(0, 10)
+add(0, 10)
+add(0, 10)
+add(0, 10)
+add(0, 10)
+add(0, 10)
+add(0, 10)
+add(0, 10)
+add(0, 10)
+add(0, 10)
+add(0, 10) // 10
+
+-----
+
+React - going towards functional style
+
+React + Redux 
+              -- 90-95% - functional
+              -- 5% to 10% - class
+
+Class
+  State
+  Life cycle
+  this object reference
+  member functions
+  Ref
+
+Functional 
+  functon, input and return output
+  no state
+  no life cycles
+  no member function/variables
+  no ref
+  ??
+
+
+  how to acheive state, life cycles in functional components
+    React Hooks
+
+      state in functional component
+
+      life cycle in functional component
+          componentDidMount
+          componentDidUpdate
+          componentWillunmount
+          
+
+Reducer - pure function 
+
+takes two args
+
+first arg is state/pre-state,
+second arg is action object {type: 'xyz'}
+
+function reducer(state, action) {
+  ....code
+  return a new state
+}
+
+function counterReducer(state, action) {
+  // don't make api/no async work, no timer, ..
+  // sync
+  switch(action.type){
+    case 'increment': {
+      // complex business logic
+      // pure function, immutable
+      return state + action.value
+    }
+    case 'decrement'{
+      // pure function, immutable
+      return state - 1
+    }
+    case 'reset'{
+      // pure function, immutable
+      return 0
+    }
+  }
+}
