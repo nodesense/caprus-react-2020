@@ -269,14 +269,14 @@ Functional
   ??
 
 
-  how to acheive state, life cycles in functional components
+  how to acheive state, life cycles in functional components?
     React Hooks
 
-      state in functional component
+      state in functional component?
 
-      life cycle in functional component
+      life cycle in functional component?
           componentDidMount
-          componentDidUpdate
+          componentDidUpdate - called on update cycle, after render func
           componentWillunmount
           
 
@@ -311,3 +311,32 @@ function counterReducer(state, action) {
     }
   }
 }
+
+
+-------------------------------
+
+memoize = memorized/cache, not localstorage, index db
+
+JS - single thread 
+      any rich computation will block the UI rendering
+
+      monitor - 60 frames per seconds
+
+    // pure function
+    // given same input, return same output
+      function add(a, b) {
+        // complex computation
+        // SPACE, TIME complexity - 5 MB in RAM, 500 ms
+        return a + b
+      }
+
+     add(10, 20), call the same 1 million time - 30
+    
+    // render is called again and again.... for every 100 ms
+      render() {
+        const memoizedAdd = memoizeOne(add);
+
+        // const result = add(a=10, b=20) 
+        const result = memoizedAdd(a=10, b=20)
+        return <>....
+      }

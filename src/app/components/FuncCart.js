@@ -1,4 +1,5 @@
-import React, {useReducer} from 'react';
+import React, {useReducer, useState, useMemo, useContext} from 'react';
+import ThemeContext from '../contexts/ThemeContext';
 
 const INITIAL_STATE = {
     items: [],
@@ -55,7 +56,27 @@ const cartReducer = (state, action) => {
     }
 }
 
+function calcGrandTotal(amount, count) {
+    console.log('calc calcGrandTotal Expensive call ', amount, count)
+    let discount = 0;
+
+    if (count >= 10) {
+        discount = 20;
+    } else if (count >= 5) {
+        discount = 10;
+    }
+
+    let grandTotal = amount - (amount * discount / 100);
+
+    return {
+        discount, 
+        grandTotal
+    }
+}
+
 const FuncCart = () => {
+
+    const theme = useContext(ThemeContext);
 
     // cartState  { items: [], amount, count }
     // dispatch is a function that will invoke the reducer with action
@@ -65,9 +86,23 @@ const FuncCart = () => {
 
     const { items, amount, count } = cartState;
 
+    // expensive calls, calls calcGrandTotal again and again for same args
+    //const {discount, 
+    //    grandTotal} = calcGrandTotal(amount, count)
+
+
+    const {discount, 
+        grandTotal} = useMemo( () => calcGrandTotal(amount, count), 
+                                        [amount, count])
+
+ 
+    const [flag, setFlag] = useState(true)
+
     return (
         <div>
             <h2>Cart</h2>
+
+            <button onClick={ () => setFlag(!flag)}>Flag</button>
 
             <button onClick={ () => {
                          const id = Math.ceil(Math.random() * 10000);
@@ -145,7 +180,7 @@ const FuncCart = () => {
 
                                         dispatch(action)
                                     }}>
-                                    X
+                                    X - {theme.scheme}
                                     </button>
                                     </td>
                                 </tr>
@@ -158,6 +193,10 @@ const FuncCart = () => {
 
         <p> Amount {amount}</p>
         <p>Count {count} </p>
+
+        <p> Discount {discount}</p>
+        <p>Grand total  {grandTotal} </p>
+
         </div>
     )
 }
