@@ -42,6 +42,33 @@ function counterReducer(state = INITIAL_STATE , action) {
     }
 }
 
+// loggerMiddleware.js
+function loggerMiddleware(store) {
+    return function(next) {
+        return function(action) {
+            console.log("LOGGER MIDDLEWARE ", action);
+            // calling next forward the action to next middleware
+            // if no more middleware placed right side, then the action forwarded to reducers
+            return next(action)
+        }
+    }
+}
+
+// es6 styled middled
+
+const cacheMiddleware = ({dispatch, getState}) => next => action => {
+    console.log('cacheMiddleware called')
+    const result = next(action);
+
+    if (typeof action === 'object' && action.type.indexOf('Counter') >= 0) {
+        // only for counter increment/reset/decrement
+        const state =  getState()
+        window.localStorage.setItem("Counter", state.counter)
+    }
+
+    return result;
+}
+
 // store.js/configureStore.js func/file
 // as soon this line execute, counterReducer automaticall invoked with state = undefined
 //     this is to initialize the default value
@@ -55,8 +82,11 @@ const rootReducer = combineReducers({
     counter: counterReducer
 })
 
-// counterReducer called twice, one for store, one for combine reducer
-const store = createStore(rootReducer) // getState() returns {counter: 0} type number
+// counterReducer called twice, one for store, one for combine reduceer
+// middlewares are called left to right
+
+const store = createStore(rootReducer, 
+                            applyMiddleware(loggerMiddleware, cacheMiddleware)) // getState() returns {counter: 0} type number
 
 export default store;
 
