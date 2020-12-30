@@ -21,7 +21,7 @@ function increment(value) {
 //es6
 const decrement = (value) => ({
     type: DECREMENT,
-    value
+    payload: {value}
 });
 
 const reset = () => ({type: RESET})
@@ -29,13 +29,15 @@ const reset = () => ({type: RESET})
 // reducer.js
 
 const INITIAL_STATE = 0;
-
-function counterReducer(state = INITIAL_STATE, action) {
+// counterReducer(state , action) by default state is undefined
+// state is undefined, 0 value used
+// returned values are stored in the store
+function counterReducer(state = INITIAL_STATE , action) {
     console.log('counterReducer called', state, action)
     switch(action.type) {
         case INCREMENT: return state + action.payload.value
         case DECREMENT: return state - action.payload.value
-        case REST: return INITIAL_STATE
+        case RESET: return INITIAL_STATE
         default: return state
     }
 }
@@ -50,4 +52,22 @@ export default store;
 
 
 // ---- demo purpose
+
+let action = increment(5)
+console.log('DISPATCING', action)
+
+store.dispatch (action) ; // this will invoke reducer, the output is kept in store
+
+console.log('STATE ', store.getState() ) ; // 5
+
+
+store.dispatch(decrement(1))
+
+console.log('STATE ', store.getState() ) ; // 4
+
+store.dispatch(reset())
+console.log('STATE ', store.getState() ) ; // 0
+
+
+
 
