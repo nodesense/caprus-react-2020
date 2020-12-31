@@ -87,6 +87,8 @@ export const mapDispatchToProps = (dispatch, getState) => {
 
 // returns a container, which is a bridge component
 // container is a PureComponent
+// container shall susbcribe automatically from store
+// container shall unsusbribe automatically when component unmounted
 const ReduxCounterContainer = connect(mapStateToProps, 
                                       mapDispatchToProps) (ReduxCounter);
 
