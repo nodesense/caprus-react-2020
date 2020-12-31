@@ -19,7 +19,11 @@ import {
     Redirect
 } from 'react-router-dom';
 import FuncCounter from './components/FuncCounter';
+
 import FuncCart from './components/FuncCart';
+
+//bridge/container component
+import ReduxCounter from './containers/ReduxCounter';
 
 
 // React functional component
@@ -99,6 +103,10 @@ function App() { // App is parent compoennt
             {/* recommended approach */}
             <Route path="/counter" 
                     render={ (props) => <Counter startValue={100} {...props} /> }> 
+            </Route>
+
+            <Route path="/redux-counter">
+                <ReduxCounter />
             </Route>
 
             <Redirect path="/newcounter" to="/counter" />

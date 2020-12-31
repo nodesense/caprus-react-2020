@@ -11,8 +11,14 @@ import {configureStore} from './app/store';
 // default import, no {}
 // alias by default
 import App from './app/App';
+import {Provider} from 'react-redux';
+
 
 const store = configureStore();
 
-ReactDOM.render(<App />, 
+// PRovider accept store as props and expose as ReduxContext
+ReactDOM.render(
+                (<Provider store = {store}>
+                <App  /> 
+                </Provider>),
                 document.getElementById('root'))

@@ -23,7 +23,12 @@ const Header = (props) => {
             <NavLink to="/products" className="button " activeClassName="success">Products</NavLink>
             <NavLink to="/cart" className="button" activeClassName="success">Cart</NavLink>
             <NavLink to="/checkout" className="button" activeClassName="success">Checkout</NavLink>
-
+            
+            <NavLink exact to="/redux-counter" className="button" 
+                        activeClassName="success">
+                            Redux Counter
+            </NavLink>
+            
             <Link to="/login">Login</Link>
             <hr />
         </div>
