@@ -5,12 +5,14 @@ import ReactDOM from 'react-dom';
 // input into separate bundle during build time
 import "./index.css"
 
-import store from './app/store';
+import {configureStore} from './app/store';
 
 
 // default import, no {}
 // alias by default
 import App from './app/App';
+
+const store = configureStore();
 
 ReactDOM.render(<App />, 
                 document.getElementById('root'))

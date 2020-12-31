@@ -340,3 +340,100 @@ JS - single thread
         const result = memoizedAdd(a=10, b=20)
         return <>....
       }
+
+
+--- 
+RECAP - Random
+
+Can you mutate the props or not?
+  should not mutate the props
+
+Child to parent component communication?
+   callback
+
+   define callback in parent
+   pass to child component
+   child shall call callback
+
+setState 
+    patterns
+      functional pattern (state, props) => {}
+
+      object key/values {key: value}
+
+      dependent setState/reactiveness/async
+
+-----
+
+  React hooks
+     state implementation
+     to achive class features in functional comp
+
+
+Context
+    pass data to nth level child
+  
+Ref 
+  createRef
+      to get ref to real dom
+
+Redux
+   implement store
+   decouple state/app data from presentation 
+   if data is swith component state, when component destroyed, state also destroyed
+   
+
+   few terminalogies
+    What is FLUX?
+      desing pattern to build complex front end application
+
+    Redux [implementation lib] vs Flux [spec/architecture] - 
+
+    Reducer
+        state  - any data type
+                    boolean or
+                    number or 
+                    object
+                    array
+                    string
+
+        action
+            type
+            payload
+
+    Action creator
+      helpers to create action object
+      just to minimize the amount of code to create action
+
+      createItemAction(name, id, qty) {
+        return {
+            {
+              {
+                id: id,
+                 { name: {}
+                     price { qty ...}}
+              }
+            }
+        }
+      }
+    action type
+      unique name for type
+        [module/scope name and activeVerb]
+
+        '[counter reset]'
+        '[auth reset]'
+
+    middleware
+
+    store
+    dispatch
+    getState
+    
+    combineReducers
+      to use more than one reducer
+      scalablility
+
+
+    how many store is recommened for react application?
+      1 but why? 
+
