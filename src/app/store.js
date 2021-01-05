@@ -1,7 +1,7 @@
 import {createStore, 
         applyMiddleware, combineReducers} from 'redux';
 
-
+import thunkMiddleware from 'redux-thunk';
 
         // instead of ./state/middlewares/loggerMiddleware
         // can we do ./state/middlewares
@@ -9,7 +9,7 @@ import {createStore,
 // importing from middlewares/index
 
 import { loggerMiddleware, cacheMiddleware } from './state/middlewares';
-import { counterReducer } from './state/reducers';
+import { authReducer, counterReducer } from './state/reducers';
  
 // store.js/configureStore.js func/file
 // as soon this line execute, counterReducer automaticall invoked with state = undefined
@@ -22,14 +22,15 @@ import { counterReducer } from './state/reducers';
 export function configureStore() {
     const rootReducer = combineReducers({
         // stateName: reducer fn
-        counter: counterReducer
+        counter: counterReducer,
+        auth: authReducer
     })
     
     // counterReducer called twice, one for store, one for combine reduceer
     // middlewares are called left to right
     
     const store = createStore(rootReducer, 
-                                applyMiddleware(loggerMiddleware, cacheMiddleware)) // getState() returns {counter: 0} type number
+                                applyMiddleware(thunkMiddleware, loggerMiddleware, cacheMiddleware)) // getState() returns {counter: 0} type number
     
     
     return store;

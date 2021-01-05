@@ -10,7 +10,7 @@ const Header = (props) => {
     // we cannot change properties
     // props.title = "something but error"; // error, won't work
     // destructuring
-    const {title, children} = props;
+    const {title, children, is_authenticated, authActions} = props;
 
     return (
         <div>
@@ -29,7 +29,12 @@ const Header = (props) => {
                             Redux Counter
             </NavLink>
             
-            <Link to="/login">Login</Link>
+
+    {!is_authenticated && <button onClick={ () => authActions.login('admin', 'admin') }> Login </button> }
+    
+    {is_authenticated &&  <button onClick={ () => authActions.logout() } > Logout </button> }
+
+
             <hr />
         </div>
     )

@@ -36,6 +36,11 @@ cd caprus-react-2020
 npm install
 npm start
 
+
+npm i redux react-redux redux-thunk
+npm i axios
+
+
 ```
 
 New for React today? - a lot of them
@@ -437,3 +442,26 @@ Redux
     how many store is recommened for react application?
       1 but why? 
 
+
+Redux is a sync library 
+    action creator
+    dispatcher
+    createStore
+    reducers 
+      all are sync library
+
+Architecture
+  A Best place to make a call
+      not inside the component
+
+
+  Many solutions present
+      redux-thunk - middleware -super simple
+          Architecture
+            enforce using the action creators [actions.js]
+              to handle the async opeartions
+                  timer, events, apis call
+
+          source code may be 10 or 12 lines
+      redux-saga - middleware - ES7
+      redux-observable - middleware, using RXJS

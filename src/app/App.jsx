@@ -1,7 +1,11 @@
 // App.jsx
 import React, {useState} from 'react';
 
-import Header from './components/Header';
+// react component
+// import Header from './components/Header';
+
+// redux container that contains Header component
+import Header from './containers/Header';
 
 // {}, not a default
 import Footer from './components/Footer';
