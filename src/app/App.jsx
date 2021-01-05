@@ -28,7 +28,9 @@ import FuncCart from './components/FuncCart';
 
 //bridge/container component
 import ReduxCounter from './containers/ReduxCounter';
+import PrivateRoute from './components/PrivateRoute';
 
+ 
 
 // React functional component
 // whenever called, create v.doms and return v.dom
@@ -95,8 +97,12 @@ function App() { // App is parent compoennt
             {/* histroy, location, params are passed as props
                 BUT we cannot pass custom props for our component
             */}
-            <Route path="/checkout" component={Checkout} />
-            
+
+            {/* <Route path="/checkout" component={Checkout} />
+             */}
+
+             <PrivateRoute path="/checkout" component={Checkout} />
+
             <Route path="/cart"
                    render={ (props) => <Cart {...props} /> } 
             >
@@ -143,6 +149,12 @@ function App() { // App is parent compoennt
                 order matter
                 this should be the last one in route
             */}
+
+            <Route path="/login">
+                <h2>You must be logged in to access this page</h2>
+                
+            </Route>
+
             <Route path="*">
                 <h2>The page you are looking for is not available!!</h2>
             </Route>    

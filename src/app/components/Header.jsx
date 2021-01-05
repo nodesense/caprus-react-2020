@@ -2,6 +2,7 @@
 import React from 'react';
 
 import {Link, NavLink} from 'react-router-dom';
+import AdminBlock from '../containers/AdminBlock';
 
 // to receive the props data from parent
 // props are read only, getter only object,no setters allowed
@@ -34,6 +35,12 @@ const Header = (props) => {
     
     {is_authenticated &&  <button onClick={ () => authActions.logout() } > Logout </button> }
 
+        <AdminBlock>
+            <NavLink exact to="/inventory" className="button" 
+                        activeClassName="success">
+                           Inventory
+            </NavLink>
+        </AdminBlock>
 
             <hr />
         </div>

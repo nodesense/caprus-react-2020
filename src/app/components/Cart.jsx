@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 
 import CartList from "./CartList";
 import CartSummary from "./CartSummary";
+import AdminBlock from "../containers/AdminBlock";
 
 class Cart extends Component {
     static defaultProps = {
@@ -170,7 +171,9 @@ class Cart extends Component {
             <button onClick={this.refresh}>
                 Refresh
             </button>
-
+            <AdminBlock>
+                 <button > Disable Checkouts </button>
+            </AdminBlock>
             <button onClick={ () => this.props.history.push("/checkout")}>
                         Checkout
             </button>

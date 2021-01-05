@@ -1,4 +1,5 @@
 import React, { Component, createRef } from 'react'
+import TextInput from './TextInput';
 
 // pop-up window
 // placeholder - dom element placed in app component
@@ -14,6 +15,7 @@ export default class Checkout extends Component {
 
         this.state = {
             firstName: '',
+            lastName: '',
             // home work, select blr, chen, pune, myso..
             city: ''
             // checkbox as home work
@@ -56,6 +58,13 @@ export default class Checkout extends Component {
                            onChange={this.handleFormChange}
                            ref = {this.firstNameRef}
                            />
+                    Last Name
+                    <TextInput name="lastName" 
+                           type="text" 
+                           value={this.state.lastName}
+                           onChange={this.handleFormChange}
+
+                           />
 
                     <p ref={this.helpTextRef}></p>
 
@@ -63,6 +72,10 @@ export default class Checkout extends Component {
                         Cart
                     </button>
                 </form>
+
+        <p>First Name {this.state.firstName}</p>
+        <p>Last Name {this.state.lastName}</p>
+
             </div>
         )
     }

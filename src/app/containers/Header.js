@@ -1,6 +1,7 @@
 import {connect} from 'react-redux';
 
 import Header from '../components/Header';
+import {withRouter} from 'react-router-dom';
 import {bindActionCreators} from 'redux';
 import * as authActions from '../state/actions/auth.actions';
 
@@ -19,4 +20,4 @@ const mapDispatchToProps = (dispatch, getState) => {
 
 // create and return container component
 
-export default connect(mapStateToProps, mapDispatchToProps) (Header);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps) (Header));
