@@ -4,6 +4,7 @@ import axios from 'axios';
 import { getProducts } from '../state/services/product.service';
 import Heading from './Heading';
 import {Helmet} from 'react-helmet';
+import { ProductTitle } from './Titles';
 
 
 class ProductList extends React.Component {
@@ -56,7 +57,8 @@ class ProductList extends React.Component {
                     <title>React App - Product page</title>
                 </Helmet>
                 <div>
-                    <h2 > Product List</h2>
+                    <ProductTitle >Product List</ProductTitle>
+
                     <table>
                         <thead>
                             <tr>

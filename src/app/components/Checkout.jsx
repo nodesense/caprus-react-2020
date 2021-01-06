@@ -3,6 +3,7 @@ import Heading from './Heading';
 import TextInput from './TextInput';
 import TextinputFunc from './TextInputFunc';
 import {Helmet} from "react-helmet";
+import { ArticleTitle } from './Titles';
 
 // pop-up window
 // placeholder - dom element placed in app component
@@ -59,8 +60,10 @@ export default class Checkout extends Component {
                 <Helmet>
                     <title>Checkout page</title>
                 </Helmet>
+ 
 
-                <h2>Checkout</h2>
+                <ArticleTitle>Checkout</ArticleTitle>
+
                 <form>
                     <TextinputFunc name="middleName" 
                            type="text" 

@@ -42,6 +42,9 @@ npm i axios
 
 npm install react-helmet
 
+npm install styled-components
+
+
 ```
 
 New for React today? - a lot of them
