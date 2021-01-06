@@ -1,6 +1,8 @@
 import React from 'react';
 import { INCREMENT } from '../state/action-types';
 
+import {Helmet} from 'react-helmet';
+
 // components are writen with abstraction
 // this component won't evne import anything redux
 
@@ -18,6 +20,10 @@ export default function ReduxCounter({counter, increment, decrement, reset,
     return (
         <div>
             <h2>ReduxCounter</h2>
+
+            <Helmet>
+                    <title>React App - Redux Counter</title>
+                </Helmet>
 
             <p>Counter {counter}</p>
 

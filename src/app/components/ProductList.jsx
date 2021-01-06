@@ -1,6 +1,9 @@
 import React from 'react';
+
 import axios from 'axios';
 import { getProducts } from '../state/services/product.service';
+import Heading from './Heading';
+import {Helmet} from 'react-helmet';
 
 
 class ProductList extends React.Component {
@@ -42,8 +45,16 @@ class ProductList extends React.Component {
     }
 
     render() {
+ 
+
         return (
             <React.Fragment>
+                <Heading>
+                    <h2>Product List</h2>
+                </Heading>
+                <Helmet>
+                    <title>React App - Product page</title>
+                </Helmet>
                 <div>
                     <h2 > Product List</h2>
                     <table>

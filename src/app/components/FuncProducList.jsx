@@ -33,6 +33,34 @@ const FuncProductList = (props) => {
     }, [])
 
 
+    useEffect( () => {
+        let cancel = undefined
+        let handle =   setInterval( () => {
+            console.log('fetching data on interval')
+            setLoading(true)
+            axios('http://localhost:7070/delayed/api/products', {
+                cancelToken: new axios.CancelToken((c => cancel = c))
+            })
+            .then (response => {
+                console.log('got response', response)
+                return response.data
+            } )
+            .then (products => {
+                console.log('got data ', products)
+                setProducts(products)
+                setLoading(false)
+            })
+        }, 60 * 1000);
+        
+
+        return () => {
+            console.log("component will be destroyed")
+            cancel && cancel();
+            clearInterval(handle)
+            handle = undefined
+        }
+    }, [])
+
     return (
         <React.Fragment>
                 <div>

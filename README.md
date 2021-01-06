@@ -40,6 +40,7 @@ npm start
 npm i redux react-redux redux-thunk
 npm i axios
 
+npm install react-helmet
 
 ```
 
@@ -465,3 +466,18 @@ Architecture
           source code may be 10 or 12 lines
       redux-saga - middleware - ES7
       redux-observable - middleware, using RXJS
+
+
+
+React Components
+
+Hierarchy
+  parent
+    children
+    content children
+
+-- render happens within component
+-- render can happen with child component context children
+
+How to render elsewere?
+  Portal

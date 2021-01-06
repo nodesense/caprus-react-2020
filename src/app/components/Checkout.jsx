@@ -1,5 +1,8 @@
 import React, { Component, createRef } from 'react'
+import Heading from './Heading';
 import TextInput from './TextInput';
+import TextinputFunc from './TextInputFunc';
+import {Helmet} from "react-helmet";
 
 // pop-up window
 // placeholder - dom element placed in app component
@@ -49,14 +52,27 @@ export default class Checkout extends Component {
         console.log("Checkout render", this.props)
         return (
             <div>
+                <Heading >
+                    <h2>Checkout page</h2>
+                </Heading>
+
+                <Helmet>
+                    <title>Checkout page</title>
+                </Helmet>
+
                 <h2>Checkout</h2>
                 <form>
+                    <TextinputFunc name="middleName" 
+                           type="text" 
+                           ref = {this.firstNameRef}
+                           />
+
                     First Name 
                     <input name="firstName" 
                            type="text" 
                            value={this.state.firstName}
                            onChange={this.handleFormChange}
-                           ref = {this.firstNameRef}
+                         
                            />
                     Last Name
                     <TextInput name="lastName" 
