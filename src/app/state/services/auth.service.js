@@ -1,8 +1,10 @@
+import config from '../../config';
 import {getJson, postJson} from './core';
+
 
 export const login = (username, password) => {
     // FIXME Hardcoded url
-    return postJson(`http://localhost:7070/oauth/token`, 
+    return postJson(`${config.API_END_POINT}/oauth/token`, 
                     {
                         data: {username, password}
                     })

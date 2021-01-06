@@ -1,13 +1,12 @@
 import axios from 'axios';
 
 
-export const jsonApi = (options = {}) => {
-    return axios(options);
+export const jsonApi = (url, options = {}) => {
+    return axios(url, options);
 }
 
 export const getJson = (url, options = {}) => {
-    return jsonApi({
-        url,
+    return jsonApi(url, {
         method: 'GET',
         ...options
     })

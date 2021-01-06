@@ -8,7 +8,7 @@ class TextInput extends React.PureComponent {
             value: props.value
         }
     }
-
+    
     // static getDerivedStateFromProps(props, state ) {
     //     return {
     //         value: props.value

@@ -29,6 +29,7 @@ import FuncCart from './components/FuncCart';
 //bridge/container component
 import ReduxCounter from './containers/ReduxCounter';
 import PrivateRoute from './components/PrivateRoute';
+import ProductList from './components/ProductList';
 
  
 
@@ -68,6 +69,26 @@ function App() { // App is parent compoennt
             <Header title={title} >
                 <p>Welcome to shop</p>
             </Header>
+
+            {/*
+                you cannot pass   props to Yourcompeontn, 
+                but the router can pass match props, location etc
+                <Route path=.. compoenent={YourComponent}.
+
+                <Route ..>
+                    you can pass your own props, but router cannot pass 
+                    match, location or history as props
+                    Childnre
+                    <YourComponent yourownprops...
+            
+                render /recommended
+
+                You can pass your own props
+                You can also pass router props history location, match
+                <Route path.. render= {props => <YourComponent yourprops {...props} }
+                
+
+            */}
 
             {/*
             
@@ -117,6 +138,10 @@ function App() { // App is parent compoennt
 
             <Route path="/redux-counter">
                 <ReduxCounter />
+            </Route>
+
+            <Route path="/products">
+                <ProductList />
             </Route>
 
             <Redirect path="/newcounter" to="/counter" />
