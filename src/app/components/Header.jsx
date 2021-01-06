@@ -31,6 +31,12 @@ const Header = (props) => {
             </NavLink>
             
 
+            <NavLink exact to="/func-products" className="button" 
+                        activeClassName="success">
+                          Func Products Lsit
+            </NavLink>
+            
+
     {!is_authenticated && <button onClick={ () => authActions.login('admin', 'admin') }> Login </button> }
     
     {is_authenticated &&  <button onClick={ () => authActions.logout() } > Logout </button> }

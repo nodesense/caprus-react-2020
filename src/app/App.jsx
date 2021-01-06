@@ -30,6 +30,7 @@ import FuncCart from './components/FuncCart';
 import ReduxCounter from './containers/ReduxCounter';
 import PrivateRoute from './components/PrivateRoute';
 import ProductList from './components/ProductList';
+import FuncProductList from './components/FuncProducList';
 
  
 
@@ -86,7 +87,7 @@ function App() { // App is parent compoennt
                 You can pass your own props
                 You can also pass router props history location, match
                 <Route path.. render= {props => <YourComponent yourprops {...props} }
-                
+
 
             */}
 
@@ -142,6 +143,10 @@ function App() { // App is parent compoennt
 
             <Route path="/products">
                 <ProductList />
+            </Route>
+
+            <Route path="/func-products">
+                <FuncProductList />
             </Route>
 
             <Redirect path="/newcounter" to="/counter" />
