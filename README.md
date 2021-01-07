@@ -484,3 +484,142 @@ Hierarchy
 
 How to render elsewere?
   Portal
+
+
+-----
+
+Typical
+  open browser - need online
+  yahoo.com
+    request is to send the yahoo server
+      receive the html
+      browser convert html to dom 
+        link tag
+        script tag
+        images 
+        video..
+        +
+        XHR - Ajax call
+
+PWA 
+  Offline accesss/cache 
+  Acceleration  - Speed
+
+
+
+Offline Acces - 
+
+Open browser
+  yahoo.com
+    check connection and return error connection error
+  
+
+---
+
+APP
+
+  React - v1.0 - bundles of JS fies, css.... - APPlication
+    SPA - Single Page Application
+      built the applicaiton using react
+       all rendering, is all done in browsers
+       no server rendering
+
+       +
+       For REST , we need server
+
+--
+
+App Bundle
+Online -> Web server serves the file to browser
+offline -> web server not there, error
+
+how do we get app bundle to browser, in case if server not available, then end user still use the react.
+
+API - you can do caching
+API may not be possible
+
+----
+
+App Versioning
+  Bundled application [resource,s scripts etc to run] - v1.0
+
+  App - V1.1 - release today
+
+      v.1.0 - customer - google chrome
+      v.1.1 - firefox
+
+  Solution: Keep the version up to the date with actual version
+
+
+--
+Push Notifications
+  Server send events
+  Accept events from server even the webpage is not opened
+
+  --
+Google Calendar - offline
+  meeting at 5:00 pm,notification from local system
+
+
+---
+ Need magic, even my browser not opened, or I havent open website
+ I need something to be running on my computer,
+ which can alert me or notify me.
+
+----
+services - 24/7 as long as your system is running
+application - UI, Click on icon, open, do... close
+-----
+
+We need something secure
+
+Web Worker - having a separate thread in JavaScript
+
+      Any webpage, it has dedicated single JS thread
+      Web Workers are addtional threads for any sync work
+        any operation without blocking the UI
+
+      Scope is as long the site is open/page is open,
+      web worker thread is killed as soon we close the web page
+      Scope per web page
+
+        tab 1 - yahoo.com , 1 instance of web worker
+        tab 2 - yahoo.com,  new 1 instance of web worker
+
+Service Worker
+
+  Extension of Web Worker, a thread possible
+  Scopped per website/domain/same origin, not based on number of tabs we opened the webpage
+  Always running unlike web worker even when the page is closed
+
+  since Service Worker keep running,
+    it can receie notification
+    sync with webserver when connection avaiable, to latest version of update 1.0, 1.1, 1.2.
+
+  
+
+index.html
+  ww.js - separate thread
+
+index.html                    ww.js 
+ Thread 1                     Thread 2
+
+ send a messsage to  thread 2
+ receive message from thread 2
+
+              vice versa
+
+
+# Web Worker instruction
+
+run as administrator
+
+npm install http-server -g
+
+
+cd example
+  http-server -c-1 .
+
+  check port 
+
+  open browser with localhost:8080

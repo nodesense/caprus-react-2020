@@ -1,0 +1,50 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Worker</title>
+    <script>
+       if (typeof(Worker) !== "undefined") {
+            console.log("web page support web worker")
+            // launching a separate thread
+            ww1 = new Worker('/ww.js');
+            // create as many web workers
+
+        }
+    </script>
+</head>
+<body>
+    <h2>Web Worker</h2>
+
+
+    <p>A </p>
+    <input type="number" id="a" value="10" />
+    <p>B</p>
+    <input type="number" id="b" value="20" />
+
+    <button id="addBtn" >Sum</button>
+
+    <p id="result">Waiting for result</p>
+
+    <script>
+        document.getElementById('addBtn')
+                .addEventListener('click', function () {
+                        const a = document.getElementById('a').value
+                        const b = document.getElementById('b').value
+                        // send messsage to web worker to perform calculatio
+                        const data = {a: +a, b: +b}
+                        // send message to 1 web worker
+                        console.log('sending calc to webworker', data)
+                        ww1.postMessage(data)
+                })
+
+        ww1.onmessage = function(e) {
+            console.log("received message from web worker", e)
+            const {sum} = e.data
+            document.getElementById('result')
+                            .textContent = "Result is " + sum
+        }
+    </script>
+
+</body>
+</html>
