@@ -623,3 +623,68 @@ cd example
   check port 
 
   open browser with localhost:8080
+
+
+SAME ORIGIN
+  protocol + web domain + port should match, 
+  
+  the page can vary..
+
+vs 
+
+CROSS ORIGIN
+  anyting except same origin, cross origin
+
+Let example      http://yahoo.com
+
+compare with below url
+
+http://yahoo.com/somepage - ?? SAME ORIGIN
+https://yahoo.com/somepage - ?? CROSS ORIGIN
+http://www.yahoo.com/somepage - ? CROSS ORIGIN, domain diff www.yahoo.com and other one is yahoo.com
+http://yahoo.com:8080/somepage - ? CROSS ORIGIN
+
+CROSS ORIGIN
+  restrictions on accessing, we cannot access
+      1. localstorage, sessionStorage
+      2. index db
+      3. Service Workers
+      4. Application cache
+
+-----
+
+Service worker allowed only on HTTPS strictly except localhost
+
+http://localhost and all others should be https://domain.com
+
+
+Service Worker
+  Fetch Proxy
+    once server worker installed, it acts like a proxy
+      any requests, that we send, it goes via the proxy
+        including the domain name on the address bar
+         http://yahoo.com -> service worker fetch
+
+Browser --> SW Proxy -------> Web Server
+            sw yahoo.com          yahoo.com web server
+
+index.html   check here
+              if present, 
+                return index.html
+                from cache
+
+              or forward to server
+                                      server respond with index.html
+                                  
+                  cache index.html
+              
+                  return response to browser
+  render index.html
+
+
+React App/ SPA APP
+
+ cache in the browser
+ enable sw. enable fetch
+ serve from local 
+  

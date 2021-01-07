@@ -9,7 +9,7 @@
             // launching a separate thread
             ww1 = new Worker('/ww.js');
             // create as many web workers
-
+            ww2 = new Worker('./ww-timer.js')
         }
     </script>
 </head>
@@ -43,6 +43,10 @@
             const {sum} = e.data
             document.getElementById('result')
                             .textContent = "Result is " + sum
+        }
+
+        ww2.onmessage = function(e) {
+            console.log("received from ww", e)
         }
     </script>
 
