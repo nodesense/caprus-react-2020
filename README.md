@@ -688,3 +688,92 @@ React App/ SPA APP
  enable sw. enable fetch
  serve from local 
   
+
+# Testing
+
+Unit Testing
+  Jasmine - BDD
+  Test Runner - JEST**, AVA, Karma, Mocha
+
+JEST 
+  convention over configuration approach
+  less configuration
+  includes Jasmine by default
+  add few more assertions/matchers for jasmine
+
+
+  Jasmine is a library - useful to write test, but it don't run the test
+
+  JEST is a tool, useful to run the test
+
+---
+
+test file name can be *.spec.js
+  or *.test.js 
+
+Keep test case in same folder - preferred**
+or in seprate fodler
+
+
+# Enzyme - abb
+
+Make test easy with interactive, jquery like apis
+
+renderer - similar to react renderer - snapshot testing
+mount - deep mouting
+          render the parent componetn
+            render componetn component too
+              render its child component
+                ...
+                  ...
+shallow - shallow mounting
+         render the parent component
+          it shall not render child component
+
+          to focus that component only test
+            don't care what child compoent does..
+
+          state changes
+
+mount -   deep render, how components and properties are used
+      -  complete rendering at all level
+
+      If child component use some technology, that is not testable, test will face error
+
+
+WEBPACK
+
+  Cli
+  Bundle JS files
+    plugins
+  Load JS files
+    small run time
+  
+  Web pack - dev tools - only for development
+    detect code changes
+    automatically build
+    refresh browser
+
+
+  bundle production build 
+    compress images 
+    compress js fiels, css 
+
+# 
+
+brings out webpack raw scripts, config into source folder 'config', patch the package.json for the commands
+
+this sections will be updated
+
+  "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+
+
+"dependencies": {.. 14 +++++ }
+
+commit the code before ejecting, 
+
+  npm run eject 
+

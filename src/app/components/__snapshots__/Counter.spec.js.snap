@@ -1,0 +1,121 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Link changes the class when hovered 1`] = `
+<div>
+  <h2>
+    Counter
+  </h2>
+  <p>
+    Start Value 
+    100
+  </p>
+  <p>
+    Counter value 
+    100
+  </p>
+  <button
+    onClick={[Function]}
+  >
+    Set State
+  </button>
+  <button
+    onClick={[Function]}
+  >
+    forceUpdate
+  </button>
+  <button
+    onClick={[Function]}
+  >
+    +1 CRASH due this
+  </button>
+  <button
+    onClick={[Function]}
+  >
+    incrementTwiceBug
+  </button>
+  <button
+    onClick={[Function]}
+  >
+    incrementTwice Render twice Inefficient
+  </button>
+  <button
+    onClick={[Function]}
+  >
+    decrementTwice
+  </button>
+  <button
+    onClick={[Function]}
+  >
+    +1
+  </button>
+  <div
+    onClick={[Function]}
+  >
+    <button
+      onClick={[Function]}
+    >
+      -1
+    </button>
+  </div>
+</div>
+`;
+
+exports[`Link changes the class when hovered 2`] = `
+<div>
+  <h2>
+    Counter
+  </h2>
+  <p>
+    Start Value 
+    100
+  </p>
+  <p>
+    Counter value 
+    101
+  </p>
+  <button
+    onClick={[Function]}
+  >
+    Set State
+  </button>
+  <button
+    onClick={[Function]}
+  >
+    forceUpdate
+  </button>
+  <button
+    onClick={[Function]}
+  >
+    +1 CRASH due this
+  </button>
+  <button
+    onClick={[Function]}
+  >
+    incrementTwiceBug
+  </button>
+  <button
+    onClick={[Function]}
+  >
+    incrementTwice Render twice Inefficient
+  </button>
+  <button
+    onClick={[Function]}
+  >
+    decrementTwice
+  </button>
+  <button
+    onClick={[Function]}
+  >
+    +1
+  </button>
+  <div
+    onClick={[Function]}
+  >
+    <button
+      onClick={[Function]}
+    >
+      -1
+    </button>
+  </div>
+</div>
+`;
